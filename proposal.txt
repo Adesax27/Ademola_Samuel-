@@ -1,0 +1,88 @@
+CSE 111 Proposal for a Student Chosen Program
+
+# TABLE of work
+Date	              Task	                                      Time Spent (hours:minutes)
+April 9, 2025	Planning and Proposal Review	                    1 hr
+April 10, 2025	Coding core functions \
+(load_optimal_ranges, simulate_current_conditions, check_status)	1hr, 59 min
+April 10, 2025  Perfecting core functions                           31 minutes
+April 12, 2025	Implementing file reading from CSV	                1hr,15 min
+April 13, 2025	Coding display_status and main functions	        1hr
+April 13, 2025	Writing and testing test functions	                1hr, 13 min
+April 14, 2025	Documentation and Report Preparation	            30 min
+Total		7hrs, 28 min
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+Onion Storage Environment Monitor
+
+2. What real-world problem will your program address or help to solve?
+This program addresses the real-world problem of maintaining \
+optimal temperature and humidity levels in onion storage facilities. \
+Improper conditions lead to spoilage (rotting, sprouting, moisture loss), reducing shelf life \
+and causing economic losses for farmers and suppliers in places like Nigeria where storage \
+ can be challenging. This program will help users define ideal conditions \
+ (based on known best practices for onions) and monitor (simulated) current conditions against these\
+targets, potentially suggesting corrective actions.
+
+3. What will you learn from developing this program?
+From developing this program, I will learn how to structure a Python application with multiple functions,
+each performing a distinct task (like defining optimal ranges, simulating sensor readings, 
+checking conditions, and generating status reports). I will gain experience implementing conditional 
+logic based on specific numerical ranges 
+(optimal temperature/humidity for onions, typically around 0°C and 65-70% RH, 
+although this can be configurable). I will practice writing and running effective test functions using 
+pytest for core logic validation (e.g., ensuring the status checks work correctly for various inputs). 
+I will also practice handling user input or configuration settings and presenting clear output.
+
+4. What Python modules will your program use?
+The primary modules I anticipate using are:
+pytest: For writing and running test functions.
+datetime: For potentially timestamping simulated readings or logging events.
+random: To simulate fluctuating environmental conditions (temperature and humidity) \
+ for testing the monitoring logic if not reading from actual sensors or files.
+(Possibly) csv or json: If I decide to store/load optimal settings or log historical simulated data \
+ from/to a file.
+    (Some examples are: csv, datetime, functools, matplotlib, math,
+    pandas, pytest, random, requests, and tkinter.)
+
+5. List the names of functions you will need?
+main(): The main function to orchestrate the program flow.
+load_optimal_ranges(): Returns a dictionary or object containing the preset ideal minimum and \
+maximum temperature and humidity values (e.g., read from constants, a config file, or user input).
+simulate_current_conditions(): Generates and returns simulated current temperature and humidity readings \
+(perhaps based on a previous state or random fluctuation).
+check_temperature_status(current_temp, optimal_temp_range): Takes the current temperature and the optimal \
+range (e.g., a tuple (min, max)). Returns a status indicator (e.g., "Optimal", "Too High", "Too Low"). (Testable)
+check_humidity_status(current_humidity, optimal_humidity_range): Takes the current humidity and the \
+ optimal range. Returns a status indicator (e.g., "Optimal", "Too High", "Too Low"). (Testable)
+determine_action(status_indicator): Takes a status indicator ("Too High", "Too Low") and suggests a \ 
+corrective action (e.g., "Activate Cooling System", "Activate Humidifier"). (Testable)
+display_status(current_temp, current_humidity, temp_status, humidity_status, temp_action, humidity_action): \
+Prints a formatted status report to the user showing current conditions, their status, and suggested actions.
+    (Remember that the most reusable functions don't get user input and
+    don't print results but instead have parameters and return a result.
+    Functions that get user input and print results are important and do
+    useful work but are not easily reusable.)
+
+    (Remember also that it's hard to test functions that get user input
+    and print results. It's easy to test functions that don't get user
+    input and don't print results but instead have parameters and return
+    a result. Therefore, you should write most of your program functions
+    to have parameters and return a result.)
+
+6. List the names of the test functions you will write.
+I plan to write pytest functions to test at least the core logic functions:
+test_check_temperature_status: Will include tests for temperatures below, within, and above the optimal range, including boundary conditions.
+test_check_humidity_status: Will include tests for humidity levels below, within, and above the optimal range, including boundary conditions.
+(Possibly) test_determine_action: If the action logic becomes complex enough, I will test the mapping from status indicators to suggested actions.
